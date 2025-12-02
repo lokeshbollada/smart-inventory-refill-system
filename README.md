@@ -1,141 +1,144 @@
-# 🛒 Smart Inventory Refill & Profit Protection System  
-*A SQL + Python based real-time inventory intelligence engine*
+🛒 Smart Inventory Refill & Profit Protection System
 
-![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
-![Tech](https://img.shields.io/badge/Tech-SQL%20Server%20%7C%20Python-blue)
-![Type](https://img.shields.io/badge/Application-Inventory%20Optimization-orange)
+A SQL + Python–powered real-time inventory intelligence engine.
 
----
+🚀 Project Overview
 
-## 📌 Project Overview  
-This project solves real retail challenges such as **stockouts**, **dead stock**, and **delayed procurement** for supermarkets like **D-Mart**, **Reliance Smart**, and **Spencer’s**.
+This system is designed to solve real retail challenges like stockouts, dead stock, and poor demand forecasting, commonly faced by supermarkets such as D-Mart, Reliance Smart, and More.
 
-It uses SQL Server to track inventory movement and Python for basic dashboard visualization.  
-The core intelligence is built inside SQL using **Views**, **Stored Procedures**, and **Forecasting Logic**.
+It uses:
 
----
+SQL Server for inventory logic
 
-## 🚀 Features Implemented
+Views & Stored Procedures for forecasting & alerts
 
-### ✅ **1. Real-Time Stock Tracking**
-- Tracks all **IN / OUT / ADJUSTMENT** movements  
-- Computes real-time `current_stock` using movement history
+Python (Jupyter) for dashboards
 
-### ✅ **2. Consumption Forecasting**
-- Calculates **Average Daily Usage (ADU)** using last 30 days of sales
-
-### ✅ **3. Dynamic Reorder Point**
-Formula used:  
-Reorder Point = (ADU × Lead Time Days) + Safety Stock
-
-markdown
-Copy code
-
-### ✅ **4. Reorder Recommendation Engine**
-The system computes:
-- `need_reorder (YES/NO)`
-- `recommended_order_qty`
-- `reorder_point`
-
-### ✅ **5. Dead Stock Detection**
-Flags products with **no sales in the last 60 days**.
-
-### ✅ **6. Automated Low-Stock Alerts**
-Stored procedure:
-GenerateLowStockAlerts
-
-markdown
-Copy code
-Creates low-stock alerts with **priority based on ABC class**.
-
-### ✅ **7. Python + Jupyter Dashboard**
-- Connects to SQL Server using `pyodbc`
-- Loads the `Inventory_Refill_Recommendations` VIEW
-- Visualizes:
-  - Current stock
-  - Reorder quantities
-  - Dead stock products
-
----
-
-## 🗂 Project Folder Structure
-
+🗂 Project Folder Structure
 smart-inventory-refill-system/
 │
 ├── sql/
-│ ├── create_tables.sql
-│ ├── insert_sample_data.sql
-│ ├── create_view.sql
-│ ├── stored_procedure_generate_alerts.sql
-│ └── demo_queries.sql
+│   ├── create_tables.sql
+│   ├── insert_sample_data.sql
+│   ├── create_view.sql
+│   ├── stored_procedure_generate_alerts.sql
+│   └── demo_queries.sql
 │
 ├── python/
-│ └── inventory_dashboard.ipynb
+│   └── inventory_dashboard.ipynb
 │
 ├── docs/
-│ ├── Short_Project_Documentation.docx
-│ ├── Project_Summary.docx
-│ ├── Workflow_Diagram.docx
-│ ├── Elevator_Pitch.docx
-│ ├── Interview_QA.docx
-│ └── Inventory_Refill_Project_Presentation.pptx
+│   ├── Short_Project_Documentation.docx
+│   ├── Project_Summary.docx
+│   ├── Workflow_Diagram.docx
+│   └── Inventory_Refill_Project_Presentation.pptx
 │
 ├── images/
-│ ├── Workflow_Diagram.png
-│ ├── products_table.png
-│ ├── vendors_table.png
-│ ├── recommendation_view.png
-│ ├── alerts_table.png
-│ ├── jupyter_dataframe.png
-│ └── stock_chart.png
+│   ├── Workflow_Diagram.png
+│   ├── products_table.png
+│   ├── vendors_table.png
+│   ├── recommendation_view.png
+│   ├── alerts_table.png
+│   ├── jupyter_dataframe.png
+│   └── stock_chart.png
 │
 └── README.md
 
-markdown
-Copy code
+🔍 Key Features
+✅ 1. Real-Time Stock Calculation
 
----
+Tracks all IN/OUT movements and keeps stock updated.
 
-## 🖼 Screenshot Gallery (Upload these in `/images` folder)
+✅ 2. Consumption Forecasting (30-day ADU)
+ADU = Total Sales in Last 30 Days / 30
 
-### 📌 **1. Products Table**
-`/images/products_table.png`
+✅ 3. Reorder Recommendation Engine
+Reorder Point = (ADU × Lead Time) + Safety Stock
 
-### 📌 **2. Vendors Table**
-`/images/vendors_table.png`
+Generates:
 
-### 📌 **3. Inventory Recommendation Engine View**
-`/images/recommendation_view.png`
+need_reorder (YES/NO)
 
-### 📌 **4. Alerts Table Screenshot**
-`/images/alerts_table.png`
+recommended_order_qty
 
-### 📌 **5. Jupyter DataFrame Output**
-`/images/jupyter_dataframe.png`
+reorder_point
 
-### 📌 **6. Stock Level Chart**
-`/images/stock_chart.png`
+✅ 4. Dead Stock Detection
 
-### 📌 **7. Workflow Diagram**
-`/images/Workflow_Diagram.png`
+Flags items with no sales for 60+ days.
 
-Add them using:
+✅ 5. Automated Alerts
+
+Stored procedure:
+
+GenerateLowStockAlerts
 
 
-yaml
-Copy code
+Creates priority-based alerts using ABC classification.
 
----
+✅ 6. Python Dashboard
 
-## 🛠 Tech Stack
+Uses:
 
-| Component | Technology |
-|----------|------------|
-| Database | SQL Server |
-| Backend | Python (pyodbc, pandas) |
-| Views & Logic | SQL Views, CTE, Aggregates |
-| Automation | Stored Procedure (GenerateLowStockAlerts) |
-| Dashboard | Jupyter Notebook + Matplotlib |
-| Scheduling (Optional) | SQL Agent |
+pyodbc
 
----
+pandas
+
+matplotlib
+
+Shows:
+
+Stock chart
+
+Reorder quantities
+
+Dead stock list
+
+🖼 Screenshots (to be uploaded in /images/)
+![Products Table](images/products_table.png)
+![Vendors Table](images/vendors_table.png)
+![Recommendation View](images/recommendation_view.png)
+![Alerts Table](images/alerts_table.png)
+![DataFrame](images/jupyter_dataframe.png)
+![Stock Chart](images/stock_chart.png)
+![Workflow Diagram](images/Workflow_Diagram.png)
+
+🛠 Tech Stack
+Layer	Technology
+Database	SQL Server
+Logic	SQL Views, Stored Procedures
+Dashboard	Jupyter Notebook
+Visuals	Matplotlib
+Python Libraries	pyodbc, pandas
+▶️ How to Run
+1. Run SQL Scripts
+
+In this exact order:
+
+create_tables.sql
+
+insert_sample_data.sql
+
+create_view.sql
+
+stored_procedure_generate_alerts.sql
+
+2. Configure Notebook
+
+Inside inventory_dashboard.ipynb, update:
+
+server = r'YOUR_SERVER_NAME'   # Example: localhost\SQLEXPRESS
+
+3. Run All Cells
+🔗 Deployment Link (GitHub Codebase)
+
+👉 https://github.com/lokeshbollada/smart-inventory-refill-system
+
+📞 Contact
+
+Lokesh
+Email: lokeshbollada80280@gmail.com
+
+⭐ Final Note
+
+This is a complete, end-to-end inventory optimization system built using pure SQL intelligence + Python analytics, structured professionally for technical evaluation.
